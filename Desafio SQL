@@ -1,4 +1,5 @@
-/*Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda:
+/* 
+1) Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda:
 Quantos empregados do departamento 5 trabalham mais de 10h por semana no projeto chamado "ProductX"?
 */
 
@@ -17,10 +18,11 @@ projeto.pjnome LIKE '%ProductX'
 
 
 /*
-Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
+2) Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
 Qual seria o custo do projeto com folha salarial (soma de todos os salários)
 caso a empresa desse 10% de aumento para todos os empregados que trabalham no projeto 'ProductX'?
 */
+
 SELECT empregado.pnome, empregado.salario, projeto.pjnome,
 ROUND((cast(empregado.salario as DECIMAL)*110)/100)
 from empregado
@@ -36,7 +38,7 @@ WHERE
 projeto.pjnome LIKE '%ProductX'
 
 /*
-Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
+3) Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
 Quais os nomes de todos os empregados que são diretamente supervisionados por Franklin Wong?
 */
 
@@ -50,7 +52,7 @@ WHERE departamento.gerssn
 IN (SELECT empregado.ssn from empregado WHERE empregado.pnome LIKE '%Franklin')
 
 /*
-Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
+4) Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
 Qual é a soma dos salários de todos os empregados do departamento chamado 'Research'?
  */
 
@@ -64,16 +66,18 @@ departamento.dnome
 LIKE '%Research'
 
 /*
-Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
+5) Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
 Qual a média salarial nessa empresa?
 */
+
 SELECT AVG (empregado.salario)
 FROM empregado
 
 /*
-Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
+6) Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
 Quantos empregados possuem um dependente com o mesmo primeiro nome que o deles?
 */
+
 SELECT empregado.pnome, dependente.nome_dependente, COUNT(*)
 from empregado
 INNER JOIN dependente
@@ -84,9 +88,10 @@ HAVING
 COUNT (*) > 1
 
 /*
-Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
+7) Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
 Quem é a pessoa que possui mais tempo de alocação no projeto 'Newbenefits'?
 */
+
 SELECT empregado.pnome, projeto.pjnome, trabalha_em.horas
 from empregado
 INNER JOIN projeto
@@ -102,9 +107,11 @@ LIKE
 '%Newbenefits'
 
 
-/*Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
+/*
+8)Considere o banco de dados do enunciado. Crie uma consulta em SQL e responda: 
 Qual o nome do departamento com a menor média de salário entre seus funcionários?
 */
+
 SELECT departamento.dnome, AVG(empregado.salario)
 from empregado
 INNER JOIN departamento

@@ -1,4 +1,4 @@
-Esse é o banco de dados que serviu de base para os exercícios de 1 a 8.
+Esse é o banco de dados que serviu de base para para o desafio do módulo.
 
 
 CREATE TABLE EMPREGADO

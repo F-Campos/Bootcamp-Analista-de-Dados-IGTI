@@ -1,3 +1,5 @@
+Esse é o banco de dados que serviu de base para os exercícios de 1 a 8.
+
 
 CREATE TABLE EMPREGADO
 	( PNOME VARCHAR(15) NOT NULL,

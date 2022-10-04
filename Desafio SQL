@@ -4,7 +4,7 @@ Quantos empregados do departamento 5 trabalham mais de 10h por semana no projeto
 */
 
 SELECT count(*)
-from empregado
+FROM empregado
 INNER JOIN trabalha_em 
 ON empregado.ssn = trabalha_em.essn
 INNER JOIN projeto 
@@ -25,7 +25,7 @@ caso a empresa desse 10% de aumento para todos os empregados que trabalham no pr
 
 SELECT empregado.pnome, empregado.salario, projeto.pjnome,
 ROUND((cast(empregado.salario as DECIMAL)*110)/100)
-from empregado
+FROM empregado
 INNER JOIN projeto
 ON
 empregado.dno = projeto.dnum
@@ -42,7 +42,8 @@ projeto.pjnome LIKE '%ProductX'
 Quais os nomes de todos os empregados que são diretamente supervisionados por Franklin Wong?
 */
 
-SELECT * FROM empregado
+SELECT * 
+FROM empregado
 INNER JOIN departamento
 ON
 empregado.dno = departamento.dnumero
@@ -79,7 +80,7 @@ Quantos empregados possuem um dependente com o mesmo primeiro nome que o deles?
 */
 
 SELECT empregado.pnome, dependente.nome_dependente, COUNT(*)
-from empregado
+FROM empregado
 INNER JOIN dependente
 ON
 dependente.essn = empregado.ssn
@@ -93,7 +94,7 @@ Quem é a pessoa que possui mais tempo de alocação no projeto 'Newbenefits'?
 */
 
 SELECT empregado.pnome, projeto.pjnome, trabalha_em.horas
-from empregado
+FROM empregado
 INNER JOIN projeto
 ON empregado.dno = projeto.dnum
 INNER JOIN trabalha_em
@@ -113,7 +114,7 @@ Qual o nome do departamento com a menor média de salário entre seus funcionár
 */
 
 SELECT departamento.dnome, AVG(empregado.salario)
-from empregado
+FROM empregado
 INNER JOIN departamento
 ON empregado.dno = departamento.dnumero
 GROUP BY departamento.dnome
